@@ -44,6 +44,7 @@ function ScreenerAIPage() {
     }
   ]
 
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -75,20 +76,53 @@ function ScreenerAIPage() {
         </div>
       </div>
 
+
+
       {/* AI Interface Screenshot Placeholder - Static Image */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 mb-20">
         <div className="relative">
+
           {/* Video Thumbnail Style Image */}
+
           <div className="bg-gray-900 rounded-lg shadow-2xl overflow-hidden">
-            <div className="relative aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+            
+            <div
+  className="relative aspect-video bg-cover bg-center"
+  style={{
+    backgroundImage:
+      "url('https://cdn-static.screener.in/img/ai/ai-video.780622021e3d.png')"
+  }}
+>
+
+
+            {/* <div className="relative aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center"> */}
+
+
+{/* 
+            style={{
+                backgroundImage: "D:\Stock Web\Screnner website\src\assets" 
+    }} */}
+
+
               {/* Play button overlay to make it look like a video thumbnail */}
+              
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm hover:bg-white/30 transition-all cursor-pointer">
+                  
+                  {/* <svg classname=" https://cdn-static.screener.in/img/ai/ai-video.780622021e3d.png">
+                  
+                  </svg>>
+                   */}
+
+{/* 
                   <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z"/>
-                  </svg>
+                  </svg>   
+               */}
+
                 </div>
               </div>
+
               {/* Preview content overlay */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                 <div className="flex items-center justify-between">
@@ -105,6 +139,8 @@ function ScreenerAIPage() {
           </div>
         </div>
       </div>
+
+
 
       {/* How it works */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
@@ -143,6 +179,7 @@ function ScreenerAIPage() {
           </div>
         </div>
       </div>
+
 
       {/* Features Section */}
       <div className="bg-white py-20">

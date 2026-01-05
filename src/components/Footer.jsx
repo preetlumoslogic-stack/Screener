@@ -97,8 +97,18 @@ function Footer() {
                   Create a Free Account
                 </Link>
               </li>
+              <li>
+                <Link 
+                  to="/register" 
+                  className={`hover:text-gray-900 ${isActive('/register') ? 'text-blue-600 font-medium' : 'text-gray-600'}`}
+                >
+                  Support
+                </Link>
+              </li>
+
             </ul>
           </div>
+
 
 
           {/* Theme Column */}

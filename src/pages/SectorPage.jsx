@@ -1,10 +1,12 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 function SectorPage() {
   const { sectorName } = useParams()
   const [currentPage, setCurrentPage] = useState(1)
-  const [resultsPerPage, setResultsPerPage] = useState(25)
+  const [resultsPerPage, setResultsPerPage] = useState(26)
+  const [showAll, setShowAll] = useState(false)
+  const navigate = useNavigate()
 
   // Decode sector name
   const decodedSectorName = decodeURIComponent(sectorName || '').split('-').map(word => 
@@ -41,10 +43,10 @@ function SectorPage() {
     { name: 'A.G. Infra Grpp', cmp: '156.78', pe: '11.45', marketCap: '5678.90', divYld: '1.5', npQtr: '198.34', profitVar: '8.1', salesQtr: '2345.67', salesVar: '11.2', roce: '15.1' }
   ]
 
-  // Pagination
-  const totalPages = Math.ceil(constructionCompanies.length / resultsPerPage)
-  const startIndex = (currentPage - 1) * resultsPerPage
-  const endIndex = startIndex + resultsPerPage
+  // Pagination (respect showAll toggle)
+  const totalPages = showAll ? 1 : Math.ceil(constructionCompanies.length / resultsPerPage)
+  const startIndex = showAll ? 0 : (currentPage - 1) * resultsPerPage
+  const endIndex = showAll ? constructionCompanies.length : startIndex + resultsPerPage
   const paginatedCompanies = constructionCompanies.slice(startIndex, endIndex)
 
   return (
@@ -59,6 +61,7 @@ function SectorPage() {
           <span className="text-gray-900 font-medium">{decodedSectorName}</span>
         </div>
 
+
         {/* Header */}
         <div className="mb-6 flex items-center justify-between">
           <div className="flex items-center space-x-2">
@@ -67,7 +70,10 @@ function SectorPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </div>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700">
+          <button
+            onClick={() => { setShowAll(s => { const next = !s; if (next) setCurrentPage(1); return next }) }}
+            className={`px-4 py-2 rounded-md text-sm font-medium flex items-center ${showAll ? 'bg-white border border-gray-300 text-gray-700' : 'bg-blue-600 text-white hover:bg-blue-700'}`}
+          >
             ALL
             <svg className="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -75,16 +81,17 @@ function SectorPage() {
           </button>
         </div>
 
+
         {/* Results Summary */}
         <div className="mb-4 flex justify-between items-center">
           <p className="text-sm text-gray-600">
-            {constructionCompanies.length} results found: Showing page {currentPage} of {totalPages}
+            {constructionCompanies.length} results found: {showAll ? `Showing all ${constructionCompanies.length} results` : `Showing page ${currentPage} of ${totalPages}`}
           </p>
           <div className="flex space-x-2">
-            <button className="px-4 py-2 border border-blue-600 rounded-md text-sm font-medium text-blue-600 hover:bg-blue-50">
+            <button onClick={() => navigate('/register')} className="px-4 py-2 border border-blue-600 rounded-md text-sm font-medium text-blue-600 hover:bg-blue-50">
               EXPORT
             </button>
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700">
+            <button onClick={() => navigate('/register')} className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700">
               EDIT COLUMNS
             </button>
           </div>

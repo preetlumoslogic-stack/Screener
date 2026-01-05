@@ -128,6 +128,7 @@ function ScreensPage() {
             </section>
 
 
+
             {/* Popular stock screens */}
             <section>
               <h2 className="text-lg font-semibold text-gray-900 mb-4">Popular stock screens</h2>

@@ -13,6 +13,7 @@ import RegisterPage from './pages/RegisterPage'
 import AboutUsPage from './pages/AboutUsPage'
 import ChangelogPage from './pages/ChangelogPage'
 import SupportPage from './pages/SupportPage'
+import GuideToCreatingScreens from './pages/GuideToCreatingScreens'
 import PasswordResetPage from './pages/PasswordResetPage'
 import TermsPage from './pages/TermsPage'
 import PrivacyPage from './pages/PrivacyPage'
@@ -37,6 +38,7 @@ function App() {
         <Route path="/about" element={<Layout><AboutUsPage /></Layout>} />
         <Route path="/changelog" element={<Layout><ChangelogPage /></Layout>} />
         <Route path="/support" element={<Layout><SupportPage /></Layout>} />
+        <Route path="/guides/creating-screens" element={<Layout><GuideToCreatingScreens /></Layout>} />
       </Routes>
     </Router>
   )
