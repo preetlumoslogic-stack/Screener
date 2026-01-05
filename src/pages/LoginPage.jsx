@@ -9,20 +9,25 @@ function LoginPage() {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Welcome back!
           </h1>
-          <p className="text-lg text-gray-600 mb-6">
+          <p className="text-lg text-gray-600 mb-4">
             Login to your account using your email and password.
           </p>
-          <p className="text-gray-600 mb-12">
+          <p className="text-gray-600 mb-6">
             Don't have an account?{' '}
             <Link to="/register" className="text-blue-600 hover:underline">
               Register for free.
             </Link>
           </p>
-          <div className="mt-auto">
+          <div className="mt-8">
             <p className="italic text-gray-600 mb-2">
               "I started investing at the age of 11. I was late!"
             </p>
             <p className="font-bold text-gray-900">Warren Buffett</p>
+          </div>
+          <div className="mt-6">
+            <Link to="/support" className="text-blue-600 hover:underline text-sm">
+              Contact Us
+            </Link>
           </div>
         </div>
 
@@ -82,9 +87,9 @@ function LoginPage() {
                 </svg>
                 <span>LOGIN</span>
               </button>
-              <a href="#" className="text-sm text-blue-600 hover:underline">
+              <Link to="/password_reset" className="text-sm text-blue-600 hover:underline">
                 Lost password?
-              </a>
+              </Link>
             </div>
           </form>
 

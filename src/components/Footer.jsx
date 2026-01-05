@@ -56,15 +56,18 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/learn" 
-                  className={`hover:text-gray-900 ${isActive('/learn') ? 'text-blue-600 font-medium' : 'text-gray-600'}`}
+                <a 
+                  href="https://bit.ly/learnscreener" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-900 text-gray-600"
                 >
                   Learn
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
+
 
           {/* Team Column */}
           <div>
@@ -80,14 +83,23 @@ function Footer() {
               </li>
               <li>
                 <Link 
+                  to="/support" 
+                  className={`hover:text-gray-900 ${isActive('/support') ? 'text-blue-600 font-medium' : 'text-gray-600'}`}
+                >
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link 
                   to="/register" 
                   className={`hover:text-gray-900 ${isActive('/register') ? 'text-blue-600 font-medium' : 'text-gray-600'}`}
                 >
-                  Support
+                  Create a Free Account
                 </Link>
               </li>
             </ul>
           </div>
+
 
           {/* Theme Column */}
           <div>

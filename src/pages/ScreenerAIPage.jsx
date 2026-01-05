@@ -1,9 +1,22 @@
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+
 function ScreenerAIPage() {
+  const navigate = useNavigate()
+  const [expandedFaqs, setExpandedFaqs] = useState([0]) // First FAQ expanded by default
+
+  const toggleFaq = (index) => {
+    setExpandedFaqs(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    )
+  }
+
   const faqs = [
     {
       question: 'What is Screener AI? How useful is it?',
-      answer: 'Screener AI is an intelligent assistant that helps you extract valuable insights from company documents like annual reports, earnings call transcripts, and regulatory filings. It saves hours of research time by providing professional-grade insights in seconds.',
-      expanded: true
+      answer: 'Screener AI is an intelligent assistant that helps you extract valuable insights from company documents like annual reports, earnings call transcripts, and regulatory filings. It saves hours of research time by providing professional-grade insights in seconds.'
     },
     {
       question: 'How is Screener AI different from other AI tools?',
@@ -46,52 +59,46 @@ function ScreenerAIPage() {
             Screener AI has direct access to company filings such as annual reports and earning calls. Just ask and get professional-grade insights in seconds.
           </p>
           <div className="flex justify-center space-x-4">
-            <button className="bg-purple-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-purple-700">
+            <button 
+              onClick={() => navigate('/register')}
+              className="bg-purple-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-purple-700"
+            >
               TRY NOW
             </button>
-            <button className="bg-white text-gray-700 border border-gray-300 px-8 py-3 rounded-md font-semibold hover:bg-gray-50">
+            <button 
+              onClick={() => navigate('/register')}
+              className="bg-white text-gray-700 border border-gray-300 px-8 py-3 rounded-md font-semibold hover:bg-gray-50"
+            >
               TOP UP
             </button>
           </div>
         </div>
       </div>
 
-      {/* AI Interface Screenshot Placeholder */}
+      {/* AI Interface Screenshot Placeholder - Static Image */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 mb-20">
-        <div className="bg-gray-900 rounded-lg p-8 shadow-2xl transform rotate-1">
-          <div className="bg-gray-800 rounded-lg p-6">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h3 className="text-white font-semibold mb-1">Screener AI</h3>
-                <p className="text-gray-400 text-sm">RACL Geartech Ltd</p>
+        <div className="relative">
+          {/* Video Thumbnail Style Image */}
+          <div className="bg-gray-900 rounded-lg shadow-2xl overflow-hidden">
+            <div className="relative aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+              {/* Play button overlay to make it look like a video thumbnail */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm hover:bg-white/30 transition-all cursor-pointer">
+                  <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
               </div>
-            </div>
-            <div className="space-y-4">
-              <div className="bg-gray-700 rounded-lg p-4">
-                <p className="text-white text-sm">
-                  What has the company been focusing on over last 3 years? What new have they been doing?
-                </p>
-              </div>
-              <div className="bg-gray-700 rounded-lg p-4">
-                <p className="text-white text-sm mb-3">
-                  <strong className="text-yellow-400">FY 2024-25: Capacity, New Projects, and Growth Realignment</strong>
-                </p>
-                <p className="text-white text-sm mb-3">
-                  <strong>Major Events & New Initiatives:</strong>
-                </p>
-                <ul className="text-white text-sm space-y-1 ml-4">
-                  <li>• Capacity expansion projects</li>
-                  <li>• New product development</li>
-                  <li>• Market expansion initiatives</li>
-                </ul>
-              </div>
-              <div className="mt-4">
-                <p className="text-gray-400 text-xs mb-2">Sources:</p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-gray-600 text-gray-300 px-3 py-1 rounded-full text-xs">Annual Report 2024</span>
-                  <span className="bg-gray-600 text-gray-300 px-3 py-1 rounded-full text-xs">Annual Report 2023</span>
-                  <span className="bg-gray-600 text-gray-300 px-3 py-1 rounded-full text-xs">Concall Transcript - Jun 2025</span>
-                  <span className="bg-gray-600 text-gray-300 px-3 py-1 rounded-full text-xs">Presentation</span>
+              {/* Preview content overlay */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-white font-semibold mb-1">Screener AI</h3>
+                    <p className="text-gray-300 text-sm">RACL Geartech Ltd</p>
+                  </div>
+                  <div className="text-white text-sm">
+                    <span className="bg-purple-600 px-3 py-1 rounded-full">5 Documents</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -109,18 +116,18 @@ function ScreenerAIPage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center">
-            <div className="bg-blue-50 rounded-lg p-8 mb-4">
+            <div className="bg-blue-50 rounded-lg p-8 mb-4 h-48 flex flex-col items-center justify-center">
               <div className="text-4xl mb-4">📄</div>
               <div className="text-2xl">↑</div>
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">No uploads</h3>
-            <p className="text-gray-600">We automatically upload the relevant documents.</p>
+            <p className="text-gray-600">We auto-upload the relevant documents.</p>
           </div>
           <div className="text-center">
-            <div className="bg-blue-50 rounded-lg p-8 mb-4">
-              <div className="bg-white rounded-lg p-4 text-left">
+            <div className="bg-blue-50 rounded-lg p-8 mb-4 h-48 flex flex-col items-center justify-center">
+              <div className="bg-white rounded-lg p-4 text-left w-full">
                 <p className="text-xs text-gray-600 mb-2">Has the auditor raised any concerns for Adani group?</p>
-                <p className="text-xs text-gray-600 mb-2">What does infosys say about its summary of latest earnings call.</p>
+                <p className="text-xs text-gray-600 mb-2">What does Infosys say about its summary of latest earnings call.</p>
                 <p className="text-xs text-gray-600">Give me a summary of latest earnings announcement in Bajaj Auto's AGM?</p>
               </div>
             </div>
@@ -128,7 +135,7 @@ function ScreenerAIPage() {
             <p className="text-gray-600">Just ask in plain English.</p>
           </div>
           <div className="text-center">
-            <div className="bg-blue-50 rounded-lg p-8 mb-4">
+            <div className="bg-blue-50 rounded-lg p-8 mb-4 h-48 flex flex-col items-center justify-center">
               <div className="text-4xl mb-4">💬</div>
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Intelligent responses</h3>
@@ -233,12 +240,20 @@ function ScreenerAIPage() {
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">{faq.question}</h3>
-                    {faq.expanded && (
+                    {expandedFaqs.includes(index) && (
                       <p className="text-gray-600">{faq.answer}</p>
                     )}
                   </div>
-                  <button className="ml-4 text-gray-400 hover:text-gray-600">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <button 
+                    onClick={() => toggleFaq(index)}
+                    className="ml-4 text-gray-400 hover:text-gray-600 transition-transform"
+                  >
+                    <svg 
+                      className={`w-6 h-6 transition-transform ${expandedFaqs.includes(index) ? 'rotate-180' : ''}`} 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -258,7 +273,10 @@ function ScreenerAIPage() {
           <p className="text-lg text-white/90 mb-8">
             You can do a top-up of the amount you want. Alternatively, you can upgrade to Screener Premium and get ₹500 AI Credits free.
           </p>
-          <button className="bg-purple-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-purple-700 flex items-center mx-auto">
+          <button 
+            onClick={() => navigate('/premium')}
+            className="bg-purple-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-purple-700 flex items-center mx-auto"
+          >
             <span className="mr-2">💎</span>
             GET PREMIUM
           </button>

@@ -71,7 +71,9 @@ function ToolsDropdown({ buttonRef }) {
         borderBottom: '3px solid #7c3aed',
         position: 'fixed',
         top: `${position.top}px`,
-        left: `${position.left}px`
+        left: `${position.left}px`,
+        maxHeight: 'calc(100vh - 20px)',
+        overflowY: 'auto'
       }}
     >
       <div className="p-4 space-y-4">

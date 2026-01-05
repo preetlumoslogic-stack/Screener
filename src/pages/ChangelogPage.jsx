@@ -59,19 +59,26 @@ function ChangelogPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-4 text-sm text-gray-600">
+          <Link to="/" className="hover:text-gray-900">Docs</Link> / <span className="text-gray-900">Change Log</span>
+        </div>
         <div className="bg-white rounded-lg shadow-sm p-8 md:p-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-12">Change Log</h1>
           
           <div className="space-y-16">
             {changelog.map((entry, index) => (
               <div key={index} className="border-b border-gray-200 pb-12 last:border-b-0 last:pb-0">
-                <div className="text-sm text-gray-500 mb-2">{entry.month}</div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                  {entry.title}
-                  <svg className="w-5 h-5 ml-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </h2>
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <div className="text-sm text-gray-500 mb-2">{entry.month}</div>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                      {entry.title}
+                      <svg className="w-5 h-5 ml-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </h2>
+                  </div>
+                </div>
                 <p className="text-gray-700 mb-6 leading-relaxed">{entry.description}</p>
                 
                 {entry.subsections && (
@@ -85,9 +92,33 @@ function ChangelogPage() {
                   </div>
                 )}
                 
-                {/* Placeholder for screenshot */}
-                <div className="bg-gray-100 rounded-lg p-8 flex items-center justify-center min-h-[200px] mt-6">
-                  <p className="text-gray-400 text-sm">Screenshot: {entry.image}</p>
+                {/* Screenshot - responsive image display */}
+                <div className="bg-gray-100 rounded-lg overflow-hidden mt-6 border border-gray-200">
+                  <div className="bg-white p-4 border-b border-gray-200">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                      <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                      <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                    </div>
+                  </div>
+                  <div className="bg-gray-50">
+                    <img 
+                      src={`/images/changelog/${entry.image}.png`}
+                      alt={entry.title}
+                      className="w-full h-auto object-contain"
+                      onError={(e) => {
+                        // Fallback to placeholder if image doesn't exist
+                        e.target.style.display = 'none'
+                        e.target.nextSibling.style.display = 'flex'
+                      }}
+                    />
+                    <div className="p-8 flex items-center justify-center min-h-[300px] bg-gray-50 hidden">
+                      <div className="text-center">
+                        <p className="text-gray-400 text-sm mb-2">Screenshot: {entry.image}</p>
+                        <p className="text-gray-300 text-xs">Image will appear here when uploaded</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}

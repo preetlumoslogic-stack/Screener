@@ -1,8 +1,9 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { screenResults } from '../data/screens'
 
 function ScreenDetailPage() {
   const { id, slug } = useParams()
+  const navigate = useNavigate()
   
   // In a real app, you'd fetch this based on id/slug
   const screen = screenResults.find(s => s.id === parseInt(id)) || screenResults[0]
@@ -15,7 +16,13 @@ function ScreenDetailPage() {
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-gray-900 mb-2">{screen.title}</h1>
           <p className="text-gray-600 mb-1">{screen.description}</p>
-          <p className="text-sm text-gray-500">by {screen.author}</p>
+          <p className="text-sm text-gray-500 mb-4">by {screen.author}</p>
+          <button
+            onClick={() => navigate('/register')}
+            className="bg-purple-600 text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-purple-700"
+          >
+            Get Email Updates
+          </button>
         </div>
 
         {/* Results Summary */}
@@ -24,13 +31,22 @@ function ScreenDetailPage() {
             {results.length} results found: Showing page 1 of 1
           </p>
           <div className="flex space-x-2">
-            <button className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+            <button 
+              onClick={() => navigate('/register')}
+              className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 hover:border-blue-300"
+            >
               INDUSTRY
             </button>
-            <button className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+            <button 
+              onClick={() => navigate('/register')}
+              className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 hover:border-blue-300"
+            >
               EXPORT
             </button>
-            <button className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+            <button 
+              onClick={() => navigate('/register')}
+              className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 hover:border-blue-300"
+            >
               EDIT COLUMNS
             </button>
           </div>
@@ -43,18 +59,78 @@ function ScreenDetailPage() {
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">S.No.</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CMP Rs.</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">P/E</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mar Cap Rs.Cr.</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Div Yld %</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NP Qtr Rs.Cr.</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Qtr Profit Var %</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sales Qtr Rs.Cr.</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Qtr Sales Var %</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ROCE %</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Avg PAT 10Yrs Rs.Cr.</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Avg Div Payout 3Yrs %</th>
+                  <th 
+                    onClick={() => navigate('/register')}
+                    className="px-4 py-3 text-left text-xs font-medium text-blue-600 uppercase tracking-wider cursor-pointer hover:text-blue-700 hover:underline"
+                  >
+                    Name
+                  </th>
+                  <th 
+                    onClick={() => navigate('/register')}
+                    className="px-4 py-3 text-left text-xs font-medium text-blue-600 uppercase tracking-wider cursor-pointer hover:text-blue-700 hover:underline"
+                  >
+                    CMP RS.
+                  </th>
+                  <th 
+                    onClick={() => navigate('/register')}
+                    className="px-4 py-3 text-left text-xs font-medium text-blue-600 uppercase tracking-wider cursor-pointer hover:text-blue-700 hover:underline"
+                  >
+                    P/E
+                  </th>
+                  <th 
+                    onClick={() => navigate('/register')}
+                    className="px-4 py-3 text-left text-xs font-medium text-blue-600 uppercase tracking-wider cursor-pointer hover:text-blue-700 hover:underline"
+                  >
+                    MAR CAP RS.CR.
+                  </th>
+                  <th 
+                    onClick={() => navigate('/register')}
+                    className="px-4 py-3 text-left text-xs font-medium text-blue-600 uppercase tracking-wider cursor-pointer hover:text-blue-700 hover:underline"
+                  >
+                    DIV YLD %
+                  </th>
+                  <th 
+                    onClick={() => navigate('/register')}
+                    className="px-4 py-3 text-left text-xs font-medium text-blue-600 uppercase tracking-wider cursor-pointer hover:text-blue-700 hover:underline"
+                  >
+                    NP QTR RS.CR.
+                  </th>
+                  <th 
+                    onClick={() => navigate('/register')}
+                    className="px-4 py-3 text-left text-xs font-medium text-blue-600 uppercase tracking-wider cursor-pointer hover:text-blue-700 hover:underline"
+                  >
+                    QTR PROFIT VAR %
+                  </th>
+                  <th 
+                    onClick={() => navigate('/register')}
+                    className="px-4 py-3 text-left text-xs font-medium text-blue-600 uppercase tracking-wider cursor-pointer hover:text-blue-700 hover:underline"
+                  >
+                    SALES QTR RS.CR.
+                  </th>
+                  <th 
+                    onClick={() => navigate('/register')}
+                    className="px-4 py-3 text-left text-xs font-medium text-blue-600 uppercase tracking-wider cursor-pointer hover:text-blue-700 hover:underline"
+                  >
+                    QTR SALES VAR %
+                  </th>
+                  <th 
+                    onClick={() => navigate('/register')}
+                    className="px-4 py-3 text-left text-xs font-medium text-blue-600 uppercase tracking-wider cursor-pointer hover:text-blue-700 hover:underline"
+                  >
+                    ROCE %
+                  </th>
+                  <th 
+                    onClick={() => navigate('/register')}
+                    className="px-4 py-3 text-left text-xs font-medium text-blue-600 uppercase tracking-wider cursor-pointer hover:text-blue-700 hover:underline"
+                  >
+                    AVG PAT 10YRS RS.CR.
+                  </th>
+                  <th 
+                    onClick={() => navigate('/register')}
+                    className="px-4 py-3 text-left text-xs font-medium text-blue-600 uppercase tracking-wider cursor-pointer hover:text-blue-700 hover:underline"
+                  >
+                    AVG DIV PAYOUT 3YRS %
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -97,7 +173,10 @@ function ScreenDetailPage() {
                 Only companies with Sep 2025 results
               </label>
             </div>
-            <button className="mt-4 w-full bg-purple-600 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-purple-700">
+            <button 
+              onClick={() => navigate('/register')}
+              className="mt-4 w-full bg-purple-600 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-purple-700"
+            >
               RUN THIS QUERY
             </button>
           </div>

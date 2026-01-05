@@ -125,9 +125,12 @@ function PremiumPage() {
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Hobby Investor</h3>
                 <p className="text-sm text-gray-600">₹0 /year</p>
               </div>
-              <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-blue-600 mb-6">
+              <Link 
+                to="/register"
+                className="w-full bg-blue-500 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-blue-600 mb-6 block text-center"
+              >
                 CREATE A FREE ACCOUNT
-              </button>
+              </Link>
               <div className="space-y-8">
                 {/* Company Analysis */}
                 <div className="space-y-3">
@@ -190,9 +193,12 @@ function PremiumPage() {
                 </div>
                 <p className="text-sm text-white/90">₹4,999 /year</p>
               </div>
-              <button className="w-full bg-white text-purple-600 py-2 px-4 rounded-md text-sm font-medium hover:bg-gray-100 mb-2">
+              <Link 
+                to="/login"
+                className="w-full bg-white text-purple-600 py-2 px-4 rounded-md text-sm font-medium hover:bg-gray-100 mb-2 block text-center"
+              >
                 LOGIN TO BUY
-              </button>
+              </Link>
               <p className="text-xs text-center text-white/80 mb-6">
                 Free Credits worth ₹500
               </p>
@@ -267,7 +273,7 @@ function PremiumPage() {
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Have more questions?{' '}
-              <a href="#" className="text-blue-600 hover:underline">Contact us</a>
+              <Link to="/register" className="text-blue-600 hover:underline">Contact us</Link>
             </p>
           </div>
         </div>
@@ -303,9 +309,12 @@ function PremiumPage() {
                   <span className="text-2xl">❤️</span>
                 </div>
               </div>
-              <button className="bg-yellow-400 text-yellow-900 px-6 py-3 rounded-md font-semibold hover:bg-yellow-500">
+              <Link 
+                to="/login"
+                className="bg-yellow-400 text-yellow-900 px-6 py-3 rounded-md font-semibold hover:bg-yellow-500 inline-block"
+              >
                 LOGIN TO UPGRADE
-              </button>
+              </Link>
             </div>
           </div>
         </div>

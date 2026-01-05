@@ -9,20 +9,25 @@ function RegisterPage() {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Get a free account
           </h1>
-          <p className="text-lg text-gray-600 mb-6">
+          <p className="text-lg text-gray-600 mb-4">
             Over 50 lakh investors use Screener for finding and tracking stock ideas.
           </p>
-          <p className="text-gray-600 mb-12">
+          <p className="text-gray-600 mb-6">
             Already registered?{' '}
             <Link to="/login" className="text-blue-600 hover:underline">
               Login here.
             </Link>
           </p>
-          <div className="mt-auto">
+          <div className="mt-8">
             <p className="italic text-gray-600 mb-2">
               "I started investing at the age of 11. I was late!"
             </p>
             <p className="font-bold text-gray-900">Warren Buffett</p>
+          </div>
+          <div className="mt-6">
+            <Link to="/support" className="text-blue-600 hover:underline text-sm">
+              Contact Us
+            </Link>
           </div>
         </div>
 
@@ -88,9 +93,9 @@ function RegisterPage() {
             <div className="text-sm text-gray-600">
               <p>
                 By registering you agree to the{' '}
-                <a href="#" className="text-blue-600 hover:underline">Terms of Use</a>
+                <Link to="/terms" className="text-blue-600 hover:underline">Terms of Use</Link>
                 {' '}and have read the{' '}
-                <a href="#" className="text-blue-600 hover:underline">Privacy Policy</a>.
+                <Link to="/privacy" className="text-blue-600 hover:underline">Privacy Policy</Link>.
               </p>
             </div>
 

@@ -46,7 +46,7 @@ function AboutUsPage() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Us</h2>
             <p className="text-gray-700 mb-4">
               You can leave us a message at{' '}
-              <Link to="/register" className="text-blue-600 hover:underline">
+              <Link to="/support" className="text-blue-600 hover:underline">
                 support page
               </Link>
               {' '}or call us at: <a href="tel:+919043192221" className="text-blue-600 hover:underline">+91-904-319-2221</a> (during office hours).
